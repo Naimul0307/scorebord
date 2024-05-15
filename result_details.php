@@ -1,6 +1,6 @@
 <?php
+session_start();
 require_once "dbcon.php";
-
 // Fetch distinct score types
 $sql_score_types = "SELECT DISTINCT score_type FROM results";
 $result_score_types = $con->query($sql_score_types);
@@ -12,7 +12,7 @@ $result_score_types = $con->query($sql_score_types);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Results</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,6 +39,7 @@ $result_score_types = $con->query($sql_score_types);
     </style>
 </head>
 <body>
+<?php include('message.php') ?>
     <section>
         <div class="container">
             <!-- Logo and Heading -->
@@ -54,10 +55,9 @@ $result_score_types = $con->query($sql_score_types);
                         <?php
                         $score_type = $row_score_types['score_type'];
                         $sql_query = "SELECT result_id, CONCAT(customers.firstname, ' ', customers.lastname) AS customer_name, results.display_data
-                                      FROM results 
-                                      INNER JOIN customers ON results.customer_id = customers.customer_id
-                                      WHERE results.score_type = '$score_type'
-                                      ORDER BY results.display_data DESC"; // Order by display_data in descending order
+                        FROM results INNER JOIN customers ON results.customer_id = customers.customer_id
+                        WHERE results.score_type = '$score_type'
+                        ORDER BY results.display_data DESC"; // Order by display_data in descending order
                         $result = $con->query($sql_query);
                         ?>
 
@@ -91,7 +91,6 @@ $result_score_types = $con->query($sql_score_types);
             </div>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/bootstrap/css/bootstrap.min.css">
     <!-- Add your custom CSS -->
     <style>
         body {
@@ -89,6 +91,8 @@
 </head>
 
 <body>
+    <?php include('message.php') ?>
+    
     <section>
         <h1>DATA INPUT</h1>
         <div class="card">
